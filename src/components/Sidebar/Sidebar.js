@@ -1,9 +1,19 @@
 import { Avatar } from '@mui/material'
 import React from 'react'
 import './Sidebar.css'
-import SidebarHashes from './SidebarHashes';
 
 function Sidebar() {
+
+  const topics = ['reactjs','competitiveprogramming','programming','softwareengineering','web3','blockchain'];
+  const recentItems = topics.map(topic=>{
+    return(
+      <div className="sidebar__recentItem">
+        <span className="sidebar__hash">#</span>
+        <p>{topic}</p>
+      </div>
+    )
+  })
+
   return (
     <div className='sidebar'>
       <div className="sidebar__top">
@@ -32,12 +42,7 @@ function Sidebar() {
 
       <div className="sidebar__bottom">
         <p>Recent</p>
-        <SidebarHashes topic="reactjs"/>
-        <SidebarHashes topic="competitiveprogramming"/>
-        <SidebarHashes topic="programming"/>
-        <SidebarHashes topic="design"/>
-        <SidebarHashes topic="javascript"/>
-        <SidebarHashes topic="softwareengineering"/>
+          {recentItems}
       </div>
     </div>
   )

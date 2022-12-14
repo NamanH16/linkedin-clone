@@ -1,16 +1,39 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CreateIcon from '@mui/icons-material/Create';
 import "./Feed.css"
 import InputOption from "./InputOption/InputOption"
 import Post from '../Post/Post';
 import { CalendarMonth, Newspaper, Photo, Subscriptions } from '@mui/icons-material';
+import {db} from "../firebase"
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 function Feed() {
+  const [input, setInput] = useState('');
   const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    db.collection("posts").onSnapshot((snapshot) =>
+        setPosts(
+            snapshot.docs.map((doc) => ({
+                id: doc.id,
+                data: doc.data(),
+            }))
+        )
+    );
+}, []);
 
   const sendPost = (e) =>{
     e.preventDefault();   // whenever we used to submit the page used to reload, in order to stop that this is written
-  }
+
+    db.collection("posts").add({
+      name:"Naman Hiran",
+      description:"This is a test",
+      message: input,
+      photoUrl:"",
+      timestamp:new Date().getTime()
+    });
+  };
 
   return (
     <div className="feed">
@@ -18,7 +41,7 @@ function Feed() {
             <div className="feed__input">
                 <CreateIcon />
                 <form>
-                    <input type="text" name="" id="" />
+                    <input type="text" value={input} onChange={e=>setInput(e.target.value)}/>
                     <button onClick={sendPost} type="submit">Send</button>
                 </form>
             </div>
@@ -29,12 +52,17 @@ function Feed() {
                 <InputOption Icon={Newspaper} title="Write article" color="#7FC15E"/>
             </div>
         </div>
-    {posts.map((post)=>(
-        <Post />
+    {posts.map(({id, data:{name, description, message, photoUrl} })=>(
+        <Post 
+          key={id}
+          name={name}
+          description={description}
+          message={message}
+          photoUrl={photoUrl}
+        />
     ))}   
-        <Post name='Naman Hiran' description='Full Stack Developer' message='Why AI is the future' photoUrl="https://media-exp1.licdn.com/dms/image/C5603AQFXUuvlAhKxfQ/profile-displayphoto-shrink_100_100/0/1627642929589?e=1676505600&v=beta&t=j24WdUamd85ddPxo3_rMUlcqtLU60IMChl-Y2irKXec"/>
     </div>
-  )
+  );
 }
 
 export default Feed

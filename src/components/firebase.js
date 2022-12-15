@@ -1,19 +1,22 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import { initializeApp } from 'firebase/app'
+import { collection } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCkBxOhVk5A4K8EOMn_fFOW7BIdyTQvvQU",
-  authDomain: "linkedin-clone-c2bcd.firebaseapp.com",
-  projectId: "linkedin-clone-c2bcd",
-  storageBucket: "linkedin-clone-c2bcd.appspot.com",
-  messagingSenderId: "100121363714",
-  appId: "1:100121363714:web:ad1e94399e868a2f3a6e1b"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: "linkedin-f2378.firebaseapp.com",
+  projectId: "linkedin-f2378",
+  storageBucket: "linkedin-f2378.appspot.com",
+  messagingSenderId: "114295464351",
+  appId: "1:114295464351:web:3b9d3618623d53988e5daa"
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebaseApp.firestore();
-const auth = firebase.auth();
+const app = initializeApp(firebaseConfig)
+const auth = getAuth(app)
+const db = getFirestore()
 
-export {db, auth};
+export { db, auth, collection}
+
 

@@ -1,7 +1,7 @@
 import { Avatar } from '@mui/material';
 import React from 'react'
 import "./Post.css";
-import InputOption from '../Feed/InputOption/InputOption';
+import InputOption from '../InputOption/InputOption';
 import { Comment, Send, Share, ThumbUpSharp } from '@mui/icons-material';
 
 function Post({name, description, message, photoUrl}) {

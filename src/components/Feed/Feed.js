@@ -8,15 +8,7 @@ import EventNoteIcon from '@mui/icons-material/EventNote'
 import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay'
 import Post from '../Post/Post'
 import { db } from '../firebase'
-import {
-  collection,
-  onSnapshot,
-  doc,
-  setDoc,
-  serverTimestamp,
-  orderBy,
-  query
-} from 'firebase/firestore'
+import {collection, onSnapshot,doc,setDoc,serverTimestamp,orderBy,query} from 'firebase/firestore'
 
 const Feed = () => {
   

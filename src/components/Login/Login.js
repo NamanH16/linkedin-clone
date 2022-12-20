@@ -3,7 +3,7 @@ import "./Login.css"
 import { auth } from '../firebase';
 import { useDispatch } from 'react-redux';
 import {login} from '../../features/userSlice';
-import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
+import {createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword} from 'firebase/auth';
 
 function Login() {
 
@@ -14,9 +14,19 @@ function Login() {
   const dispatch = useDispatch();
 
 
-  const loginToApp = (e) =>{
+  const loginToApp = async(e) =>{
     e.preventDefault();
 
+    await signInWithEmailAndPassword(auth, email, password)
+    .then((userAuth)=>{
+      dispatch(login({
+        email:userAuth.user.email,
+        uid:userAuth.user.uid,
+        displayName:userAuth.user.displayName,
+        profileUrl:userAuth.user.photoURL,
+      }))
+    })
+    .catch(error => alert(error));
   };
 
   const register = async() =>{

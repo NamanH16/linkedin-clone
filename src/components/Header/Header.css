@@ -40,3 +40,15 @@
 .header__right{
     display: flex;
 }
+
+.header__right>button{
+    border:none;
+    background-color: white;
+    color: gray;
+    margin-left: 10px;
+}
+
+.header__right>button:hover{
+    border:1px solid whitesmoke;
+    color: black;
+}

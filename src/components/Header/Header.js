@@ -38,8 +38,8 @@ function Header() {
           <HeaderOption Icon={Notifications} title="Notifications"/>
           <HeaderOption avatar={true} 
           title="Me"
-          onClick={logoutOfApp}
           />
+          <button type="submit" onClick={logoutOfApp}>Sign Out</button>
       </div>
     </div>
   )

@@ -1,4 +1,14 @@
-# Getting Started with Create React App and Redux
+# Screenshots of the website
+## Login or Register
+![Login Page](https://github.com/NamanH16/linkedin-clone/blob/master/src/assets/home_2.png)
+
+## Feed
+![Feed](https://github.com/NamanH16/linkedin-clone/blob/master/src/assets/feed_2.png)
+
+## Communicate and Connect
+![added_comment](https://github.com/NamanH16/linkedin-clone/blob/master/src/assets/added_comment.png)
+
+## Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 

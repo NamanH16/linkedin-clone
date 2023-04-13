@@ -1,4 +1,4 @@
-# Screenshots of the website
+# Screenshots of the live website
 ## Login or Register
 ![Login Page](https://github.com/NamanH16/linkedin-clone/blob/master/src/assets/home_2.png)
 
